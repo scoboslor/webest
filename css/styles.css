@@ -109,7 +109,8 @@ header .menu .menu-item:hover {
 }
 
 h1 {
-    font-size: 12rem;
+    /*font-size: 12rem;*/
+    font-size: clamp(72px, calc(390/2000 * 100vw), 200px);
     text-transform: uppercase;
     font-weight: 500;
     color: #000000;
@@ -134,8 +135,30 @@ h2 {
     font-weight: 500;
     color: #000000;
     padding-top: 2rem;
-    padding-bottom: 3.5rem;
+    padding-bottom: 2rem;
     display: inline-block;
+}
+
+h3 {
+    font-size: 3.5rem;
+    font-weight: 500;
+    color: #000000;
+    padding-top: .5rem;
+    display: inline-block;
+}
+
+h4 {
+    font-size: 2rem;
+    font-weight: 500;
+    color: #000000;
+    padding-top: .5rem;
+    padding-bottom: 1.5rem;
+    display: inline-block;
+}
+
+h4.price {
+    font-size: 3.5rem;
+    font-weight: 500;
 }
 
 .r {
@@ -150,12 +173,77 @@ h2 {
 .c {
     display: flex;
     flex-direction: column;
-    border-left: 1px solid #000000;
+    justify-content: space-between;
     flex: 1;
+    border-left: 1px solid #000000;
+    position: relative;
 }
 
 .r .c:last-of-type {
     border-right: 1px solid #000000;
+}
+
+#t {
+    cursor: none;
+}
+
+.c .i {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 1.5rem;
+}
+
+.c .info {
+    /*display: none;*/
+    position: absolute;
+    top: calc(100% + 1px);
+    left: 0;
+    width: 100%;
+    height: 10%;
+    background-color: #ffffff;
+    padding: 2.5rem;
+    transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.c .i:hover + .info {
+    display: flex;
+    top: 0;
+    height: 100%;
+}
+
+.info:hover {
+    display: flex;
+    top: 0;
+    height: 100%;
+}
+
+.c:after {
+    content: '';
+    position: absolute;
+    height: 30%;
+    background-color: rgb(212, 203, 201);
+    width: 100%;
+    left: 0;
+    top: calc(100% + 1px);
+}
+
+.curs {
+    position: absolute;
+    top: var(--top);
+    left: var(--left);
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 1px solid #000000;
+    background-color: #ffffff;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTY1IiBoZWlnaHQ9IjE2MyIgdmlld0JveD0iMCAwIDE2NSAxNjMiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxsaW5lIHgxPSI2OC43IiB5MT0iMiIgeDI9IjE2NC43IiB5Mj0iMiIgc3Ryb2tlPSJibGFjayIgc3Ryb2tlLXdpZHRoPSI0Ii8+CjxsaW5lIHgxPSIxNjIuNyIgeTE9IjEwMCIgeDI9IjE2Mi43IiB5Mj0iNCIgc3Ryb2tlPSJibGFjayIgc3Ryb2tlLXdpZHRoPSI0Ii8+CjxsaW5lIHgxPSIxNjIuNDA1IiB5MT0iMi40MjMwMiIgeDI9IjEuNDA1MzQiIHkyPSIxNjEuNDIzIiBzdHJva2U9ImJsYWNrIiBzdHJva2Utd2lkdGg9IjQiLz4KPC9zdmc+Cg==);
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: 35%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
 }
 
 .t {
@@ -245,7 +333,7 @@ form .form-group input {
 }
 
 form .form-group textarea {
-    width: 100%;
+    min-width: 100%;
     max-width: 100%;
     height: 10rem;
     border: 1px solid #000000;
@@ -282,9 +370,101 @@ footer {
     min-height: 30vh;
     background-color: rgb(161, 154, 152);
     padding: 1.5rem;
-    display: flex;
+    display: grid;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
 }
+
+
+
+
+
+
+
+:root {
+    --font-size-huge: clamp(72px, calc(390/2000 * 100vw), 390px);
+    --font-size-h1: clamp(62px, calc(240/2000 * 100vw), 240px);
+    --font-size-h2: clamp(40px, calc(210/2000 * 100vw), 210px);
+    --font-size-h3: clamp(32px, calc(120/2000 * 100vw), 120px);
+    --font-size-h4: clamp(26px, calc(60/1920 * 100vw), 60px);
+    --font-size-h5: clamp(23px, calc(40/1920 * 100vw), 40px);
+    --font-size-h6: 1.25rem;
+}
+@font-face {
+    font-display: swap;
+    font-family: "Suisse Intl";
+    src: url("https://scoboslor.github.io/fonts/SuisseIntl/SuisseIntl-Medium.woff2") format("woff2"),
+    url("https://scoboslor.github.io/fonts/SuisseIntl/SuisseIntl-Medium.woff") format("woff");
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-display: swap;
+    font-family: "Suisse Intl";
+    src: url("https://scoboslor.github.io/fonts/SuisseIntl/SuisseIntl-SemiBold.woff2") format("woff2"),
+    url("https://scoboslor.github.io/fonts/SuisseIntl/SuisseIntl-SemiBold.woff") format("woff");
+    font-weight: 600;
+    font-style: normal;
+}
+@font-face {
+    font-display: swap;
+    font-family: "Tiempos";
+    src: url("https://scoboslor.github.io/fonts/SuisseIntl/TiemposText-Regular.woff2") format("woff2"),
+    url("https://scoboslor.github.io/fonts/SuisseIntl/TiemposText-Regular.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+}
+.algo * {
+    box-sizing: border-box;
+    font-family: "Suisse Intl", "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.algo ::selection {
+    background-color: #dcd0ff;
+    color: #333333;
+}
+
+.algo h1 {
+    font-size: var(--font-size-h2);
+    text-align: center;
+}
+
+.algo h2 {
+    font-size: var(--font-size-h4);
+    text-align: center;
+}
+
+.algo section {
+    padding: 20vmax calc(2.5rem);
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    margin-bottom: 30vh;
+}
+
+.algo section:nth-of-type(odd) {
+    background-color: #000000;
+    color: #FFFFFF;
+}
+
+.algo section:nth-of-type(even) {
+    background-color: #FFFFFF;
+    color: #000000;
+}
+
+
+.algo {
+    border: 1px solid #000000;
+}
+
+
+
+
+
+
+
+
