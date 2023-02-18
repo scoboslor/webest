@@ -16,6 +16,7 @@ window.addEventListener('load', () => {
 
 const tarifasSect = document.getElementById('t');
 const tarifas = Array.from(tarifasSect.children);
+const menuBtn = document.getElementById('menu-btn');
 
 const c = document.createElement('div');
 c.classList.add('curs');
@@ -38,4 +39,17 @@ window.addEventListener('mousemove', (e) => {
         c.style.setProperty('--top', e.clientY + 'px');
         c.style.setProperty('--left', e.clientX + 'px');
     }
+});
+
+
+menuBtn.addEventListener('click', () => {
+    document.body.classList.toggle('menu-open');
+});
+
+// After clicking on the links, the menu closes
+const menuLinks = document.querySelectorAll('.menu a');
+menuLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        document.body.classList.remove('menu-open');
+    });
 });

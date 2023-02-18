@@ -2935,6 +2935,7 @@ window.addEventListener('load', function () {
 
 var tarifasSect = document.getElementById('t');
 var tarifas = Array.from(tarifasSect.children);
+var menuBtn = document.getElementById('menu-btn');
 var c = document.createElement('div');
 c.classList.add('curs');
 tarifas.forEach(function (tarifa) {
@@ -2953,6 +2954,17 @@ window.addEventListener('mousemove', function (e) {
     c.style.setProperty('--top', e.clientY + 'px');
     c.style.setProperty('--left', e.clientX + 'px');
   }
+});
+menuBtn.addEventListener('click', function () {
+  document.body.classList.toggle('menu-open');
+});
+
+// After clicking on the links, the menu closes
+var menuLinks = document.querySelectorAll('.menu a');
+menuLinks.forEach(function (link) {
+  link.addEventListener('click', function () {
+    document.body.classList.remove('menu-open');
+  });
 });
 },{"locomotive-scroll":"node_modules/locomotive-scroll/dist/locomotive-scroll.esm.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -2979,7 +2991,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56931" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58564" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

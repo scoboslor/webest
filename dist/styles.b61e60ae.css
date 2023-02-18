@@ -62,44 +62,105 @@ header .logo {
     margin-top: 10px;
 }
 
-header .menu {
+.menu-btn__burger {
     display: flex;
-    align-items: center;
-    flex-direction: row;
+    flex-direction: column;
+    justify-content: center;
 }
 
-header .menu ul {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    gap: 2.5rem;
+.xsmenu svg {
+    width: 2.5rem;
+    height: 2.5rem;
+    cursor: pointer;
+    position: relative;
+    z-index: 10;
 }
 
-header .menu ul li {
+.xsmenu svg * {
+    transition: transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.xsmenu ul {
+    display: none;
+}
+
+body.menu-open {
+    overflow: hidden;
+}
+
+.menu-open {
+    display: block;
+}
+
+.menu-open .xsmenu svg :nth-child(1) {
+    transform: rotate(45deg);
+    transform-origin: center;
+}
+
+.menu-open .xsmenu svg :nth-child(2) {
+    transform: rotate(-45deg);
+    transform-origin: center;
+}
+
+.menu-open ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 2.5rem;
+    background-color: #ffffff;
+    overflow: hidden;
+}
+
+.menu-open ul li {
+    font-size: 2.6rem;
+    font-weight: 500;
+    color: #000000;
+    margin-bottom: 1.5rem;
+    cursor: pointer;
     list-style: none;
+    text-align: center;
+    display: inline-block;
+    overflow: hidden;
 }
 
-header .menu ul li a {
+.menu-open ul li a {
+    color: #000000;
     text-decoration: none;
-    color: #000000;
-    font-size: 1.1rem;
-    font-weight: 500;
+    padding: 0.2rem 0.5rem;
+    display: inline-block;
+    rotate: 7deg;
+    animation: appear 0.5s ease-in-out;
+    animation-fill-mode: forwards;
 }
 
-header .menu ul li a:hover {
-    /*text-decoration: blink;*/
-    text-decoration: line-through;
+@keyframes appear {
+    0% {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    55% {
+        rotate: 3deg;
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        rotate: 0deg;
+    }
 }
 
-header .menu .menu-item {
-    font-size: 1.5rem;
-    font-weight: 500;
-    color: #000000;
-    margin-left: 2.5rem;
+.menu-open ul li a:hover {
+    color: #ffffff;
+    background: #504747;
 }
 
-header .menu .menu-item:hover {
-    color: #000000;
+.menu-open ul li a:active {
+    color: #ffffff;
+    background: #000000;
 }
 
 .main {
@@ -131,7 +192,13 @@ body.is-loaded .main h1 {
 }
 
 h2 {
-    font-size: 4.5rem;
+    /*--font-size-h1: clamp(62px, calc(240/2000 * 100vw), 240px);*/
+    /*--font-size-h2: clamp(40px, calc(210/2000 * 100vw), 210px);*/
+    /*--font-size-h3: clamp(32px, calc(120/2000 * 100vw), 120px);*/
+    /*--font-size-h4: clamp(26px, calc(60/1920 * 100vw), 60px);*/
+    /*--font-size-h5: clamp(23px, calc(40/1920 * 100vw), 40px);*/
+    /*font-size: 4.5rem;*/
+    font-size: clamp(40px, calc(210/2000 * 100vw), 4.5rem);
     font-weight: 500;
     color: #000000;
     padding-top: 2rem;
@@ -140,7 +207,7 @@ h2 {
 }
 
 h3 {
-    font-size: 3.5rem;
+    font-size: clamp(32px, calc(120/2000 * 100vw), 3.5rem);
     font-weight: 500;
     color: #000000;
     padding-top: .5rem;
@@ -157,14 +224,14 @@ h4 {
 }
 
 h4.price {
-    font-size: 3.5rem;
+    font-size: clamp(32px, calc(60/1920 * 100vw), 3.5rem);
     font-weight: 500;
 }
 
 .r {
     width: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     border-block: 1px solid #000000;
     /*flex: 1;*/
     height: 520px;
@@ -176,6 +243,9 @@ h4.price {
     justify-content: space-between;
     flex: 1;
     border-left: 1px solid #000000;
+    border-right: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+    background-color: rgb(212, 203, 201);
     position: relative;
 }
 
@@ -201,28 +271,33 @@ h4.price {
     top: calc(100% + 1px);
     left: 0;
     width: 100%;
-    height: 10%;
-    background-color: #ffffff;
+    height: 0;
+    background-color: rgb(255, 255, 255);
     padding: 2.5rem;
-    transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+    transition: top 0.4s cubic-bezier(0.215, 0.61, 0.355, 1), color 0.2s ease-in-out, color 0.2s ease-in-out, height 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+    color: transparent;
 }
 
 .c .i:hover + .info {
     display: flex;
     top: 0;
     height: 100%;
+    color: black;
+    background-color: #ffffff;
 }
 
 .info:hover {
     display: flex;
     top: 0;
     height: 100%;
+    color: black;
+    background-color: #ffffff;
 }
 
 .c:after {
     content: '';
     position: absolute;
-    height: 30%;
+    height: 51%;
     background-color: rgb(212, 203, 201);
     width: 100%;
     left: 0;
@@ -287,6 +362,12 @@ h4.price {
     position: relative;
     left: 10px;
     stroke: #FFFFFF;
+}
+
+.nmbr {
+    display: inline-block;
+    width: 13px;
+    text-align: center;
 }
 
 .link {
@@ -372,99 +453,74 @@ footer {
     padding: 1.5rem;
     display: grid;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-content: center;
+    /*justify-content: center;*/
 
+}
+
+footer h2 {
+    place-self: end;
+    margin-right: 181px;
 }
 
 
 
 
 
+@media (min-width: 768px) {
 
+    header .menu {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+    }
 
-:root {
-    --font-size-huge: clamp(72px, calc(390/2000 * 100vw), 390px);
-    --font-size-h1: clamp(62px, calc(240/2000 * 100vw), 240px);
-    --font-size-h2: clamp(40px, calc(210/2000 * 100vw), 210px);
-    --font-size-h3: clamp(32px, calc(120/2000 * 100vw), 120px);
-    --font-size-h4: clamp(26px, calc(60/1920 * 100vw), 60px);
-    --font-size-h5: clamp(23px, calc(40/1920 * 100vw), 40px);
-    --font-size-h6: 1.25rem;
+    header .menu svg {
+        display: none;
+    }
+
+    header .menu ul {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        gap: 2.5rem;
+    }
+
+    header .menu ul li {
+        list-style: none;
+    }
+
+    header .menu ul li a {
+        text-decoration: none;
+        color: #000000;
+        font-size: 1.1rem;
+        font-weight: 500;
+    }
+
+    header .menu ul li a:hover {
+        /*text-decoration: blink;*/
+        text-decoration: line-through;
+    }
+
+    header .menu .menu-item {
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: #000000;
+        margin-left: 2.5rem;
+    }
+
+    header .menu .menu-item:hover {
+        color: #000000;
+    }
+
+    .r {
+        flex-direction: row;
+    }
+
+    .c:not(:last-child) {
+        border-right: 0;
+    }
 }
-@font-face {
-    font-display: swap;
-    font-family: "Suisse Intl";
-    src: url("https://scoboslor.github.io/fonts/SuisseIntl/SuisseIntl-Medium.woff2") format("woff2"),
-    url("https://scoboslor.github.io/fonts/SuisseIntl/SuisseIntl-Medium.woff") format("woff");
-    font-weight: 500;
-    font-style: normal;
-}
-@font-face {
-    font-display: swap;
-    font-family: "Suisse Intl";
-    src: url("https://scoboslor.github.io/fonts/SuisseIntl/SuisseIntl-SemiBold.woff2") format("woff2"),
-    url("https://scoboslor.github.io/fonts/SuisseIntl/SuisseIntl-SemiBold.woff") format("woff");
-    font-weight: 600;
-    font-style: normal;
-}
-@font-face {
-    font-display: swap;
-    font-family: "Tiempos";
-    src: url("https://scoboslor.github.io/fonts/SuisseIntl/TiemposText-Regular.woff2") format("woff2"),
-    url("https://scoboslor.github.io/fonts/SuisseIntl/TiemposText-Regular.woff") format("woff");
-    font-weight: 400;
-    font-style: normal;
-}
-.algo * {
-    box-sizing: border-box;
-    font-family: "Suisse Intl", "Helvetica Neue", Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-}
-
-.algo ::selection {
-    background-color: #dcd0ff;
-    color: #333333;
-}
-
-.algo h1 {
-    font-size: var(--font-size-h2);
-    text-align: center;
-}
-
-.algo h2 {
-    font-size: var(--font-size-h4);
-    text-align: center;
-}
-
-.algo section {
-    padding: 20vmax calc(2.5rem);
-    height: 100vh;
-    position: sticky;
-    top: 0;
-    margin-bottom: 30vh;
-}
-
-.algo section:nth-of-type(odd) {
-    background-color: #000000;
-    color: #FFFFFF;
-}
-
-.algo section:nth-of-type(even) {
-    background-color: #FFFFFF;
-    color: #000000;
-}
-
-
-.algo {
-    border: 1px solid #000000;
-}
-
-
-
-
-
 
 
 
