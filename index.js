@@ -30,7 +30,9 @@ tarifas.forEach(tarifa => {
     });
 
     tarifa.addEventListener('mouseleave', () => {
-        document.body.removeChild(c);
+        if (document.body.contains(c)) {
+            c.remove();
+        }
     });
 });
 
@@ -51,5 +53,17 @@ const menuLinks = document.querySelectorAll('.menu a');
 menuLinks.forEach(link => {
     link.addEventListener('click', () => {
         document.body.classList.remove('menu-open');
+    });
+});
+
+const imgLinks = document.querySelectorAll('.row.link');
+const imgs = document.querySelectorAll('.imga .img img');
+
+imgLinks.forEach((link, i) => {
+    link.addEventListener('mouseenter', () => {
+        imgs[i].classList.add('vis');
+    });
+    link.addEventListener('mouseleave', () => {
+        imgs[i].classList.remove('vis');
     });
 });

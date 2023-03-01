@@ -2946,7 +2946,9 @@ tarifas.forEach(function (tarifa) {
     });
   });
   tarifa.addEventListener('mouseleave', function () {
-    document.body.removeChild(c);
+    if (document.body.contains(c)) {
+      c.remove();
+    }
   });
 });
 window.addEventListener('mousemove', function (e) {
@@ -2964,6 +2966,16 @@ var menuLinks = document.querySelectorAll('.menu a');
 menuLinks.forEach(function (link) {
   link.addEventListener('click', function () {
     document.body.classList.remove('menu-open');
+  });
+});
+var imgLinks = document.querySelectorAll('.row.link');
+var imgs = document.querySelectorAll('.imga .img img');
+imgLinks.forEach(function (link, i) {
+  link.addEventListener('mouseenter', function () {
+    imgs[i].classList.add('vis');
+  });
+  link.addEventListener('mouseleave', function () {
+    imgs[i].classList.remove('vis');
   });
 });
 },{"locomotive-scroll":"node_modules/locomotive-scroll/dist/locomotive-scroll.esm.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
@@ -2991,7 +3003,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50520" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50661" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

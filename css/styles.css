@@ -289,7 +289,6 @@ h4.price {
 
     font-size: 2rem;
     line-height: 1.5;
-    line-grid:
 }
 
 .r .c:last-of-type {
@@ -321,6 +320,10 @@ h4.price {
     color: transparent;
 }
 
+.c .info a {
+    color: transparent;
+}
+
 .c .i:hover + .info {
     display: flex;
     top: 0;
@@ -335,6 +338,21 @@ h4.price {
     height: 100%;
     color: black;
     background-color: #ffffff;
+}
+
+:is(.c .i:hover + .info, .info:hover) a {
+    color: black;
+    text-decoration: none;
+}
+
+:is(.c .i:hover + .info, .info:hover) a:hover {
+    color: #000000;
+    text-decoration: line-through;
+}
+
+body:has(.info:hover a:hover) .curs {
+    transition: background-color 0.2s ease-in-out;
+    background-color: transparent;
 }
 
 .c:after {
@@ -420,6 +438,38 @@ h4.price {
     cursor: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyNy4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCINCgkgdmlld0JveD0iMCAwIDE1OS41IDE2MS41IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAxNTkuNSAxNjEuNTsiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPHN0eWxlIHR5cGU9InRleHQvY3NzIj4NCgkuc3Qwe2ZpbGw6bm9uZTtzdHJva2U6IzAwMDAwMDtzdHJva2Utd2lkdGg6MTc7fQ0KPC9zdHlsZT4NCjxsaW5lIGlkPSJzdmdfMSIgY2xhc3M9InN0MCIgeDE9IjYuOSIgeTE9IjE2LjEiIHgyPSIxNTUuMiIgeTI9IjE2LjEiLz4NCjxsaW5lIGlkPSJzdmdfMiIgY2xhc3M9InN0MCIgeDE9IjE0Ni45IiB5MT0iOC4yIiB4Mj0iMTQ2LjkiIHkyPSIxNTYuNSIvPg0KPGxpbmUgaWQ9InN2Z18zIiBjbGFzcz0ic3QwIiB4MT0iMTQ1IiB5MT0iMTYuMSIgeDI9IjguMSIgeTI9IjE1My41Ii8+DQo8L3N2Zz4NCg==) 20 5, auto;
 }
 
+.imga {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    flex: 1;
+    padding-bottom: 2rem;
+    position: relative;
+}
+
+.imga .img img {
+    width: 700px;
+    opacity: 0.7;
+    pointer-events: none;
+    user-select: none;
+    position: sticky;
+    bottom: 0;
+}
+
+.imga .img {
+    height: 0;
+    overflow: hidden;
+    transition: height 0.4s ease-in-out;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.imga .img:has( img.vis) {
+    height: 300px
+}
+
+
 form {
     display: flex;
     flex-direction: column;
@@ -498,7 +548,7 @@ footer {
     flex-direction: column;
     align-content: center;
     /*justify-content: center;*/
-
+    position: relative;
 }
 
 footer h2 {
@@ -506,7 +556,28 @@ footer h2 {
     margin-right: 181px;
 }
 
+footer a {
+    text-decoration: none;
+    color: #000000;
+    font-size: 1.3rem;
+    font-weight: 500;
+}
 
+footer .lin {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2.5rem;
+    margin-left: 1.5rem;
+    place-self: start;
+}
+
+footer a:hover {
+    text-decoration: line-through;
+    cursor: pointer;
+}
 
 
 
