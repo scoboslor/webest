@@ -196,6 +196,10 @@ body.is-loaded .main h1 {
     cursor: default;
 }
 
+.c-def {
+    cursor: default;
+}
+
 .itl:hover {
     font-style: italic;
 }
@@ -244,6 +248,21 @@ h2 {
     padding-bottom: 2rem;
     display: inline-block;
 }
+
+.aa {
+    /*columns: 2;*/
+    width: 55%;
+}
+
+p {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #000000;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    display: inline-block;
+}
+
 
 h3 {
     font-size: clamp(32px, calc(120/2000 * 100vw), 3.5rem);
@@ -315,7 +334,7 @@ h4.price {
     width: 100%;
     height: 0;
     background-color: rgb(255, 255, 255);
-    padding: 2.5rem;
+    padding: 2.8rem;
     transition: top 0.4s cubic-bezier(0.215, 0.61, 0.355, 1), color 0.2s ease-in-out, color 0.2s ease-in-out, height 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
     color: transparent;
 }
@@ -355,6 +374,12 @@ body:has(.info:hover a:hover) .curs {
     background-color: transparent;
 }
 
+body:has(.info:hover a:active) .curs {
+    height: 80px;
+    width: 80px;
+    transition: height 0.2s ease-in-out, width 0.2s ease-in-out;
+}
+
 .c:after {
     content: '';
     position: absolute;
@@ -384,7 +409,7 @@ body:has(.info:hover a:hover) .curs {
 
 .t {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }
 
 .text {
@@ -443,17 +468,28 @@ body:has(.info:hover a:hover) .curs {
     flex-direction: column;
     justify-content: end;
     flex: 1;
-    padding-bottom: 2rem;
+    padding-bottom: 4rem;
     position: relative;
 }
 
 .imga .img img {
-    width: 700px;
-    opacity: 0.7;
+    width: 365px;
+    /*opacity: 0.7;*/
     pointer-events: none;
     user-select: none;
-    position: sticky;
-    bottom: 0;
+    position: relative;
+}
+
+.imga .img::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(218, 185, 182);
+    z-index: 10;
+    mix-blend-mode: multiply;
 }
 
 .imga .img {
@@ -461,12 +497,12 @@ body:has(.info:hover a:hover) .curs {
     overflow: hidden;
     transition: height 0.4s ease-in-out;
     position: absolute;
-    bottom: 0;
+    bottom: 50px;
     left: 0;
 }
 
 .imga .img:has( img.vis) {
-    height: 300px
+    height: 165px
 }
 
 
@@ -643,6 +679,18 @@ footer a:hover {
 
     .c:not(:last-child) {
         border-right: 0;
+    }
+
+    .t {
+        flex-direction: row;
+    }
+
+    .imga .img:has( img.vis) {
+        height: 300px
+    }
+
+    .imga .img img {
+        width: 700px;
     }
 }
 
